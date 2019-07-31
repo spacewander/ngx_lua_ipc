@@ -143,7 +143,7 @@ http {
 
 # How it works
 
-IPC alerts are split into 4K packets and delivered to workers via Unix pipes. On the receiving end, a persistent timer started with `ngx.timer.at` hangs around waiting to be manually triggered by the reading IPC event handler, and thes is re-added to wait for the next alert. A simple hack in concept, but a bit convoluted in implementation.
+IPC alerts are split into packets not larger than PIPE_BUF and delivered to workers via Unix pipes. On the receiving end, a persistent timer started with `ngx.timer.at` hangs around waiting to be manually triggered by the reading IPC event handler, and thes is re-added to wait for the next alert. A simple hack in concept, but a bit convoluted in implementation.
 
 # Speed
 
